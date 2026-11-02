@@ -4,8 +4,37 @@
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#09111e;color:#edf4ff}*{box-sizing:border-box}body{margin:0}header{background:linear-gradient(120deg,#142c4d,#112034);padding:25px max(20px,calc((100vw - 1320px)/2));border-bottom:1px solid #30486a}h1{margin:0;font-size:29px}h2{font-size:19px;margin:0 0 14px}.lead,.muted{color:#aebfd7}.lead{margin:6px 0}.muted{font-size:13px}main{max-width:1320px;margin:auto;padding:22px;display:grid;gap:17px}.panel{background:#14243a;border:1px solid #30415c;border-radius:15px;padding:20px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}.row{display:flex;align-items:center;flex-wrap:wrap;gap:9px}button,input,select{font:inherit}button{background:#3787f8;color:#fff;padding:10px 14px;border:0;border-radius:9px;cursor:pointer}button.secondary{background:#2b415d}button.danger{background:#79364c}button:hover:not(:disabled){filter:brightness(1.1)}button:disabled{opacity:.42;cursor:not-allowed}input,select{width:100%;min-width:0;background:#0b192c;color:#fff;border:1px solid #425774;padding:10px;border-radius:8px}input[type=checkbox]{width:auto}label{font-size:13px;color:#c5d3e7;display:block;margin-bottom:5px}.pill{border:1px solid #456487;border-radius:25px;padding:4px 9px;font-size:12px;color:#b8d5fb}.status{padding:12px;background:#0b192c;border-radius:9px;white-space:pre-wrap;overflow-wrap:anywhere}.notice{border-left:3px solid #4c9fff;padding:9px 12px;background:#1a304c;border-radius:6px;font-size:13px}.track{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #2e425e}.track:last-child{border-bottom:0}.track strong{display:block}.track small{color:#afc1d8}.track.active{background:#203b5b;border-radius:9px;padding-left:9px;padding-right:9px}audio{width:100%;margin-top:12px}a{color:#8cc1ff}progress{width:100%}.hidden{display:none!important}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.toolbar>*{flex:1;min-width:150px}.stats{display:flex;gap:10px;flex-wrap:wrap}.stat{border:1px solid #314c6a;border-radius:9px;padding:8px 12px;font-size:13px}.stat strong{font-size:18px;display:block}.now{font-size:15px;color:#d8e9ff}.file-actions{margin-top:12px}.genre-guide{margin-top:12px;padding:12px;border:1px solid #315579;border-radius:10px;background:#10233a}.genre-list{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.genre-chip{background:#263f5c;padding:7px 12px}.genre-chip.on{background:#3787f8}.smallbtn{padding:7px 10px;font-size:13px}.positive{color:#8ee5bd}@media(max-width:720px){.track{align-items:flex-start;flex-direction:column}.track .row button{flex:1}main{padding:12px}.panel{padding:15px}}
 
 .iconbtn{width:39px;height:39px;min-width:39px;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:19px;border-radius:10px}.iconbtn:focus-visible{outline:3px solid #b7ddff;outline-offset:2px}.track-actions{display:flex;gap:5px;align-items:center}.trackinfo{min-width:0;flex:1}.trackinfo strong{overflow-wrap:anywhere}.playerbar{position:sticky;top:0;z-index:9;background:#10243d;border:1px solid #42658a;border-radius:12px;padding:13px;margin:12px 0;box-shadow:0 6px 20px #0005}.playerbar .row{justify-content:space-between}.timebar{width:100%;accent-color:#58abff;cursor:pointer}.clock{font-variant-numeric:tabular-nums;font-size:14px;color:#c9e4fc}.drivechip{display:inline-block;border:1px solid #456487;border-radius:7px;padding:5px 9px;margin:3px}.hierarchy{display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:9px}.micro{font-size:12px;color:#a9bfdc}.headrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.headrow h2{margin:0}.headrow .row{margin-left:auto}.track{min-width:0}@media(max-width:700px){.hierarchy{grid-template-columns:1fr}.playerbar{top:0}.track{flex-direction:row;align-items:center}.track-actions{flex-shrink:0}}
+
+/* CLOUDRADIO_WORKER_ADMIN_BRIDGE_V1: ponte visual para o Worker, sem credenciais no GitHub */
+.crbridge-header{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.crbridge-links{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}
+.crbridge-links a{display:inline-block;background:#284d74;border:1px solid #50769a;border-radius:9px;padding:10px 12px;color:#eaf5ff;text-decoration:none;font-size:13px}
+.crbridge-links a:hover{background:#316393}
+.crbridge-table{display:grid;gap:7px;max-height:320px;overflow:auto}
+.crbridge-entry{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:11px;background:#0b192c;border:1px solid #2f4a67;border-radius:9px}
+.crbridge-entry strong{overflow-wrap:anywhere;font-size:14px}
+.crbridge-entry a{white-space:nowrap}
+.crbridge-note{font-size:12px;color:#aebfd7;line-height:1.6}
+
 </style><script src="https://accounts.google.com/gsi/client" async defer></script></head>
 <body><header><h1>☁ CloudRadio <span class="pill">2.2</span></h1><p class="lead">Gêneros · artistas · álbuns · múltiplos Drives · reprodução contínua</p></header><main>
+
+<section class="panel" id="cloudflareBridge">
+ <div class="crbridge-header"><div><h2>☁ CloudRadio Nuvem — Gerenciamento seguro</h2><p class="muted">Google Drive → Cloudflare Worker → Catálogo público. As operações privadas abrem no Worker autenticado.</p></div><span class="pill" id="crbridgeState">Aguardando consulta</span></div>
+ <div class="crbridge-links">
+  <a href="https://cloudradio-audio.elementacional.workers.dev/admin/status" target="_blank" rel="noopener noreferrer">🔒 Login e estado do Drive</a>
+  <a href="https://cloudradio-audio.elementacional.workers.dev/admin/picker" target="_blank" rel="noopener noreferrer">＋ Selecionar MP3 no Google Picker</a>
+  <a href="https://cloudradio-audio.elementacional.workers.dev/admin/catalogo-page" target="_blank" rel="noopener noreferrer">♫ Gerenciar músicas na nuvem</a>
+  <a href="https://cloudradio-audio.elementacional.workers.dev/admin/mp3-test" target="_blank" rel="noopener noreferrer">▶ Testar MP3 privado</a>
+  <a href="https://cloudradio-audio.elementacional.workers.dev/catalogo" target="_blank" rel="noopener noreferrer">Consultar JSON público</a>
+  <a href="../" target="_blank" rel="noopener noreferrer">Abrir rádio pública</a>
+ </div>
+ <div class="row"><button type="button" class="secondary" id="crbridgeRefresh">↻ Atualizar catálogo Cloudflare</button><span id="crbridgeCount" class="pill">— faixas na nuvem</span></div>
+ <p id="crbridgeMessage" class="crbridge-note" role="status">O catálogo público pode ser consultado sem autenticação; nenhuma credencial será enviada por esta página.</p>
+ <div class="crbridge-table" id="crbridgeTracks" aria-live="polite"></div>
+ <p class="crbridge-note">O painel GitHub não recebe senhas, refresh tokens, Client Secret nem cookies administrativos. Para adicionar ou remover músicas, use os botões que abrem diretamente o painel protegido do Cloudflare. A gestão local anterior permanece disponível abaixo.</p>
+</section>
+
 <section class="panel"><h2>1. Conta Google e sincronização</h2><div class="grid"><div><label for="client">OAuth Client ID</label><input id="client" autocomplete="off" placeholder="...apps.googleusercontent.com"></div><div><label for="origin">Origem JavaScript autorizada</label><input id="origin" readonly></div></div><div class="row" style="margin-top:12px"><button id="connect">Conectar Google</button><button class="secondary" id="disconnect" disabled>Desconectar</button><button class="secondary" id="sync" disabled>Sincronizar agora</button><span class="pill" id="authstate">Desconectado</span></div><p class="muted">Escopo: <code>drive.file</code>. O ID do cliente fica salvo neste navegador; o token de acesso não. Após atualizar a página, use “Conectar Google” novamente. O Google pode permitir a seleção rápida da conta.</p></section>
 <section class="panel"><div class="headrow"><h2>Contas Google Drive</h2></div><p class="muted">Conecte cada conta separadamente usando o mesmo Client ID Web. As permissões de cada conta são independentes. Tokens permanecem somente na memória do navegador; depois do F5 é preciso reconectar as contas para tocar arquivos privados delas.</p><div class="row"><select id="driveAccount" aria-label="Conta Drive ativa" style="max-width:360px"><option value="">Nenhuma conta conectada</option></select><button id="addAccount" class="secondary" title="Conectar outra conta" aria-label="Conectar outra conta">＋</button><button id="switchAccount" class="secondary" title="Usar conta escolhida" aria-label="Usar conta escolhida">↪</button></div><div id="accountInfo" class="muted" style="margin-top:8px">Nenhuma conta autorizada nesta sessão.</div></section>
 <section class="panel"><h2>2. Enviar MP3 ao Google Drive</h2><div class="grid"><div><label for="files">Selecionar MP3</label><input id="files" type="file" accept=".mp3,audio/mpeg" multiple></div><div><label for="category">Gênero / pasta de destino</label><input id="category" list="genresList" value="Músicas IA" maxlength="80" placeholder="Ex.: MPB, Rock, Flash House"><datalist id="genresList"></datalist></div><div><label for="artistUpload">Artista / subpasta</label><input id="artistUpload" list="artistsList" placeholder="Ex.: Bob Marley" maxlength="80"><datalist id="artistsList"></datalist></div><div><label for="albumUpload">Álbum / subpasta</label><input id="albumUpload" list="albumsList" placeholder="Ex.: Exodus" maxlength="80"><datalist id="albumsList"></datalist></div><div><label for="sourceUrl">Link Happy Shrimp (opcional)</label><input id="sourceUrl" type="url" placeholder="https://..."></div></div><div class="row" style="margin-top:12px"><button id="upload" disabled>Enviar ao Drive</button><button class="secondary" id="export">Exportar catálogo JSON</button><button class="secondary" id="import">Importar catálogo JSON</button><input type="file" accept=".json,application/json" id="importFile" class="hidden"></div><progress id="progress" value="0" max="100" class="hidden"></progress><p class="muted">Destino: <strong>CloudRadio / Musicas / [Gênero] / [Artista] / [Álbum]</strong>; índice em <strong>CloudRadio/catalogo.json</strong>. Arquivos privados, sem publicação automática.</p><div class="genre-guide"><strong>Pastas e gêneros musicais</strong><p class="muted">Crie gêneros e envie faixas para artista e álbum; mantenha artista e álbum em branco para guardar MP3 diretamente no gênero. “Sincronizar pastas” encontra arquivos acessíveis nas pastas criadas pelo aplicativo. Para arquivos colocados manualmente no Drive, o escopo drive.file não garante acesso: envie pelo aplicativo ou importe arquivos com autorização apropriada.</p><div class="row"><input id="newGenre" maxlength="80" placeholder="Novo gênero, ex.: Flash House" style="max-width:290px"><button id="createGenre" class="secondary" disabled>+ Criar pasta de gênero</button><button id="scanGenres" class="secondary" disabled>↻ Sincronizar pastas</button></div><div class="genre-list" id="genreFolders"></div></div></section>
@@ -172,4 +201,49 @@ $('importMap28').onclick=async()=>{
  try{saveLocal();await persistCatalog();feedback.textContent=`Catálogo privado sincronizado: ${added} novos, ${kept} existentes preservados, ${removed} registros removidos. MP3 originais intactos.`}
  catch(e){tracks=before;saveLocal();feedback.textContent='Falha ao salvar no Drive; catálogo local restaurado: '+e.message}
 };
+
+/* CLOUDRADIO_WORKER_ADMIN_BRIDGE_V1: consulta pública, sem endpoints administrativos chamados via CORS */
+(()=>{
+ const root=document.getElementById('cloudflareBridge');
+ if(!root)return;
+ const $bridge=id=>document.getElementById(id);
+ const endpoint='https://cloudradio-audio.elementacional.workers.dev/catalogo';
+ const prefix='https://cloudradio-audio.elementacional.workers.dev/audio/';
+ const validId=id=>typeof id==='string'&&/^[A-Za-z0-9_-]{10,160}$/.test(id);
+ let loading=false;
+ async function refresh(){
+  if(loading)return;loading=true;
+  const button=$bridge('crbridgeRefresh');
+  button.disabled=true;
+  $bridge('crbridgeState').textContent='Sincronizando';
+  $bridge('crbridgeMessage').textContent='Consultando catálogo público da Cloudflare…';
+  try{
+   const controller=new AbortController();
+   const timeout=setTimeout(()=>controller.abort(),12000);
+   let response;
+   try{response=await fetch(endpoint+'?v='+Date.now(),{cache:'no-store',mode:'cors',signal:controller.signal})}finally{clearTimeout(timeout)}
+   if(!response.ok)throw new Error('HTTP '+response.status);
+   const data=await response.json();
+   if(!data||!Array.isArray(data.tracks))throw new Error('Resposta de catálogo inválida');
+   const rows=data.tracks.filter(t=>t&&validId(t.id)&&typeof t.title==='string');
+   const target=$bridge('crbridgeTracks');target.replaceChildren();
+   rows.forEach(t=>{
+    const line=document.createElement('div');line.className='crbridge-entry';
+    const name=document.createElement('strong');name.textContent=t.title;
+    const link=document.createElement('a');link.href=prefix+encodeURIComponent(t.id);link.target='_blank';link.rel='noopener noreferrer';link.textContent='Ouvir ↗';link.setAttribute('aria-label','Ouvir '+t.title);
+    line.append(name,link);target.append(line);
+   });
+   if(!rows.length){const p=document.createElement('p');p.className='muted';p.textContent='Ainda não há músicas cadastradas no KV.';target.append(p)}
+   $bridge('crbridgeCount').textContent=rows.length+' faixa(s) na nuvem';
+   $bridge('crbridgeState').textContent='Conectado';
+   $bridge('crbridgeMessage').textContent='Catálogo público consultado com sucesso. Para cadastrar ou remover músicas, abra o gerenciamento Cloudflare.';
+  }catch(err){
+   $bridge('crbridgeState').textContent='Indisponível';
+   $bridge('crbridgeMessage').textContent='Não foi possível consultar o catálogo: '+(err&&err.name==='AbortError'?'tempo esgotado':err.message)+'. O Admin local permanece funcionando.';
+  }finally{loading=false;button.disabled=false}
+ }
+ $bridge('crbridgeRefresh').addEventListener('click',refresh);
+ refresh();
+})();
+
 </script></body></html>
